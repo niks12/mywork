@@ -1,7 +1,9 @@
-# mywork — Priya News
+# mywork — Priya News (EXPORT BRANCH)
 
-**GitHub:** https://github.com/niks12/mywork  
-**Branch:** `main`
+> **This branch (`export/mywork-full-0966`) on `niks12/limagica` is a temporary export.**
+> Copy to your repo: `git clone -b export/mywork-full-0966 https://github.com/niks12/limagica.git` then push to `niks12/mywork`.
+
+**GitHub target:** https://github.com/niks12/mywork (branch `main`)
 
 Multilingual news anchor (English / Hindi / Gujarati) + automated **YouTube Shorts** with newsroom background.
 
