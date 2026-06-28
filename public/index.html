@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Priya — Multilingual Avatar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Sans+Gujarati:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <h1>MyWork Avatar</h1>
+      </div>
+      <p class="subtitle">Female multilingual assistant</p>
+    </header>
+
+    <main class="main">
+      <section class="avatar-panel" aria-label="Avatar">
+        <div class="avatar-ring" id="avatarRing">
+          <img
+            id="avatarImage"
+            src="avatars/priya/assets/avatar.png"
+            alt="Priya — virtual assistant avatar"
+            class="avatar-image"
+          />
+          <div class="speaking-indicator" id="speakingIndicator" hidden>
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <div class="avatar-meta">
+          <h2 id="avatarName">Priya</h2>
+          <p id="avatarDescription">Friendly virtual assistant</p>
+          <div class="language-badges" id="languageBadges"></div>
+        </div>
+      </section>
+
+      <section class="chat-panel" aria-label="Conversation">
+        <div class="language-switcher" id="languageSwitcher" role="tablist" aria-label="Select language"></div>
+
+        <div class="messages" id="messages" aria-live="polite"></div>
+
+        <form class="composer" id="composer">
+          <label class="sr-only" for="messageInput">Message</label>
+          <textarea
+            id="messageInput"
+            rows="2"
+            placeholder="Type a message..."
+            required
+          ></textarea>
+          <div class="composer-actions">
+            <button type="button" class="btn btn-secondary" id="greetBtn">Greet me</button>
+            <button type="submit" class="btn btn-primary" id="speakBtn">Speak</button>
+          </div>
+        </form>
+
+        <p class="hint" id="voiceHint">Uses your browser's text-to-speech. Hindi and Gujarati voices depend on your system.</p>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="js/avatar.js"></script>
+</body>
+</html>

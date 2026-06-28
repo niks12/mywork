@@ -1,0 +1,42 @@
+{
+  "id": "priya",
+  "displayName": "Priya",
+  "gender": "female",
+  "description": "Friendly virtual assistant who speaks English, Hindi, and Gujarati.",
+  "avatarImage": "assets/avatar.png",
+  "defaultLocale": "en-IN",
+  "supportedLocales": [
+    {
+      "code": "en-IN",
+      "name": "English",
+      "nativeName": "English",
+      "speechLang": "en-IN",
+      "fallbackSpeechLang": "en-US",
+      "greeting": "Hello! I'm Priya, your multilingual assistant. How can I help you today?",
+      "placeholder": "Type a message in English..."
+    },
+    {
+      "code": "hi-IN",
+      "name": "Hindi",
+      "nativeName": "हिन्दी",
+      "speechLang": "hi-IN",
+      "fallbackSpeechLang": "hi",
+      "greeting": "नमस्ते! मैं प्रिया हूँ, आपकी बहुभाषी सहायक। आज मैं आपकी कैसे मदद कर सकती हूँ?",
+      "placeholder": "हिन्दी में संदेश लिखें..."
+    },
+    {
+      "code": "gu-IN",
+      "name": "Gujarati",
+      "nativeName": "ગુજરાતી",
+      "speechLang": "gu-IN",
+      "fallbackSpeechLang": "gu",
+      "greeting": "નમસ્તે! હું પ્રિયા છું, તમારી બહુભાષી સહાયક. આજે હું તમારી કેવી રીતે મદદ કરી શકું?",
+      "placeholder": "ગુજરાતીમાં સંદેશ લખો..."
+    }
+  ],
+  "voicePreferences": {
+    "en-IN": { "pitch": 1.05, "rate": 0.95 },
+    "hi-IN": { "pitch": 1.05, "rate": 0.9 },
+    "gu-IN": { "pitch": 1.05, "rate": 0.9 }
+  }
+}
