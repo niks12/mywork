@@ -23,15 +23,42 @@ public/
   js/avatar.js
 ```
 
-### Run locally
+### Run on your laptop
 
-From the project root:
+**Linux / macOS**
+
+```bash
+chmod +x host.sh
+./host.sh
+```
+
+**Windows**
+
+```bat
+host.bat
+```
+
+The script syncs avatar files, starts a local server, and opens your browser at [http://127.0.0.1:8080](http://127.0.0.1:8080).
+
+Optional environment variables:
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `PORT` | `8080` | Server port |
+| `HOST` | `127.0.0.1` | Bind address |
+| `OPEN_BROWSER` | `1` | Set to `0` to skip opening the browser |
+
+Example:
+
+```bash
+PORT=3000 ./host.sh
+```
+
+**Manual start**
 
 ```bash
 python3 -m http.server 8080 --directory public
 ```
-
-Then open [http://localhost:8080](http://localhost:8080).
 
 ### How it works
 
