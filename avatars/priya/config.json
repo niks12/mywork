@@ -2,8 +2,8 @@
   "id": "priya",
   "displayName": "Priya",
   "gender": "female",
-  "description": "Friendly virtual assistant who speaks English, Hindi, and Gujarati.",
-  "avatarImage": "assets/avatar.png",
+  "description": "Priya — multilingual news anchor for YouTube Shorts. Speaks English, Hindi, and Gujarati.",
+  "avatarImage": "assets/avatar-news.png",
   "defaultLocale": "en-IN",
   "supportedLocales": [
     {

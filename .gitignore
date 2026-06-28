@@ -1,0 +1,7 @@
+# Python / generated
+shorts/.venv/
+shorts/output/
+shorts/config.env
+shorts/.state/
+shorts/__pycache__/
+*.pyc

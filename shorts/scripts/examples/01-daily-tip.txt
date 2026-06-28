@@ -1,0 +1,6 @@
+---
+title: Daily Tip
+voice: en-IN-NeerjaNeural
+rate: +0%
+---
+Namaste friends! Here is your daily tip — write your scripts in the inbox folder and run ./run.sh to create Shorts automatically.

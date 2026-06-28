@@ -1,0 +1,6 @@
+---
+title: Daily AI Tip
+voice: en-US-JennyNeural
+rate: +0%
+---
+Hey! Welcome back. Here is one quick tip: batch your short scripts in the inbox folder and run automate.sh batch to create a week of content in one go.

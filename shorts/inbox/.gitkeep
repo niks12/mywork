@@ -1,0 +1,9 @@
+# Drop .txt or .md script files here.
+# Then run from the avatar-shorts folder:
+#   ./automate.sh batch
+# or watch the folder automatically:
+#   ./automate.sh watch
+#
+# Example:
+#   cp scripts/examples/daily-tip.txt inbox/
+#   ./automate.sh batch

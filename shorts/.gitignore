@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.venv-*/
+vendor/
+
+# Generated videos and local config
+output/
+config.env
+inbox/done/
+.state/
+
+# Archives
+*.tar.gz
