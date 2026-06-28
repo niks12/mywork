@@ -17,8 +17,20 @@
 
 ```bash
 git clone https://github.com/niks12/mywork.git
+# OR GitLab:
+# git clone https://gitlab.com/niks12/mywork.git
 cd mywork
 bash update.sh
+```
+
+## Push to GitLab (from your machine)
+
+```bash
+export GITLAB_TOKEN="glpat-your-token"
+export GITLAB_URL="https://gitlab.com"
+export GITLAB_PROJECT="niks12/mywork"
+cd ~/mywork
+bash push-to-gitlab.sh
 ```
 
 ## Update anytime
