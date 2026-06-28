@@ -10,20 +10,48 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BRANCH="${MYWORK_BRANCH:-main}"
 LOG="${ROOT}/shorts/output/update.log"
 
-mkdir -p "${ROOT}/shorts/output"
+mkdir -p "${ROOT}/shorts/output" 2>/dev/null || mkdir -p "${ROOT}/output"
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "${LOG}"; }
 
 log "=== mywork update started ==="
 log "Folder: ${ROOT}"
 log "Branch: ${BRANCH}"
 
+# Safety: do not pull limagica main into a mywork folder
 if [[ -d "${ROOT}/.git" ]]; then
-  log "Pulling latest from GitHub..."
-  git -C "${ROOT}" fetch origin
-  git -C "${ROOT}" checkout "${BRANCH}"
-  git -C "${ROOT}" pull --ff-only origin "${BRANCH}" || log "Git pull skipped (check network/auth)"
+  ORIGIN_URL="$(git -C "${ROOT}" remote get-url origin 2>/dev/null || true)"
+  if [[ "${ORIGIN_URL}" == *"niks12/mywork"* ]]; then
+    log "Pulling latest from niks12/mywork..."
+    git -C "${ROOT}" fetch origin
+    git -C "${ROOT}" checkout "${BRANCH}"
+    git -C "${ROOT}" pull --ff-only origin "${BRANCH}" || log "Git pull skipped"
+  elif [[ "${ORIGIN_URL}" == *"niks12/limagica"* ]]; then
+    log "WARNING: origin is limagica — NOT pulling (would delete shorts/)."
+    log "Run: git checkout export/mywork-full-0966"
+    log "Then: bash push-to-github.sh"
+    if [[ ! -f "${ROOT}/shorts/install.sh" ]]; then
+      log "Restoring Priya project files from export branch..."
+      git -C "${ROOT}" fetch origin
+      git -C "${ROOT}" checkout export/mywork-full-0966
+    fi
+  else
+    log "Unknown origin — skip git pull"
+  fi
 else
   log "Not a git repo — skip pull"
+fi
+
+if [[ ! -f "${ROOT}/shorts/generate_short.py" ]]; then
+  echo
+  echo "ERROR: shorts/ folder missing. This is not the Priya mywork project."
+  echo
+  echo "Fix:"
+  echo "  cd ~ && rm -rf mywork-full"
+  echo "  export GITHUB_TOKEN='ghp_your_token'"
+  echo "  git clone -b export/mywork-full-0966 \\"
+  echo "    \"https://\${GITHUB_TOKEN}@github.com/niks12/limagica.git\" mywork-full"
+  echo "  cd mywork-full && bash push-to-github.sh"
+  exit 1
 fi
 
 # System deps
@@ -37,7 +65,14 @@ if ((${#missing[@]})); then
 fi
 
 log "Updating Python environment..."
-bash "${ROOT}/shorts/install.sh"
+if [[ -f "${ROOT}/shorts/install.sh" ]]; then
+  bash "${ROOT}/shorts/install.sh"
+elif [[ -f "${ROOT}/shorts/install-ubuntu.sh" ]]; then
+  bash "${ROOT}/shorts/install-ubuntu.sh"
+else
+  echo "ERROR: shorts/install.sh not found" >&2
+  exit 1
+fi
 
 [[ -f "${ROOT}/shorts/config.env" ]] || cp "${ROOT}/shorts/config.env.example" "${ROOT}/shorts/config.env"
 
@@ -64,6 +99,5 @@ python "${ROOT}/shorts/generate_short.py" \
 
 log "=== Update complete ==="
 log "Test video: ${ROOT}/shorts/output/update-test.mp4"
-log "Full automation: bash ${ROOT}/shorts/install-full-auto.sh"
 echo
 echo "Play test: xdg-open ${ROOT}/shorts/output/update-test.mp4"
